@@ -1,14 +1,15 @@
 import express from 'express'
-import correios from 'correios.js'
+import Correios from 'correios.js'
 import z from 'zod'
 
 const app = express()
+const correios = new Correios()
 app.use(express.json())
 
 app.get('/track', async (req, res) => {
     try {
         const trackQueryParams = z.object({
-            code: z.string().url(),
+            code: z.string()
         })
 
         const {code} = trackQueryParams.parse(req.query)

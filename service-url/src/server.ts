@@ -9,7 +9,7 @@ app.use(express.json())
 app.get('/short', async (req, res) => {
     try {
         const shortQueryParams = z.object({
-            url: z.string().url(),
+            url: z.string(),
         })
 
         const {url} = shortQueryParams.parse(req.query)
